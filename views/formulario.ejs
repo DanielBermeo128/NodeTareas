@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= tarea ? 'Editar Tarea' : 'Crear Nueva Tarea' %></title>
+</head>
+<body>
+    <h1><%= tarea ? 'Editar Tarea' : 'Crear Nueva Tarea' %></h1>
+    <form action="<%= tarea ? '/tareas/editar/' + tarea.id : '/tareas/nueva' %>" method="POST">
+        <label for="titulo">Título:</label>
+        <input type="text" name="titulo" id="titulo" value="<%= tarea ? tarea.titulo : '' %>" required>
+        <br>
+
+        <label for="importancia">Importancia:</label>
+        <select name="importancia_id" id="importancia" required>
+            <% importancia.forEach(item => { %>
+                <option value="<%= item.id %>" <%= tarea && tarea.importancia_id === item.id ? 'selected' : '' %>>
+                    <%= item.tipo_importancia %>
+                </option>
+            <% }); %>
+        </select>
+        <br>
+
+        <label for="urgencia">Urgencia:</label>
+        <select name="urgencia_id" id="urgencia" required>
+            <% urgencia.forEach(item => { %>
+                <option value="<%= item.id %>" <%= tarea && tarea.urgencia_id === item.id ? 'selected' : '' %>>
+                    <%= item.nivel_urgencia %>
+                </option>
+            <% }); %>
+        </select>
+        <br>
+
+        <label for="dependencia">Dependencia:</label>
+        <input type="text" name="dependencia" id="dependencia" value="<%= tarea ? tarea.dependencia : '' %>" required>
+        <br>
+
+        <label for="fecha_llegada">Fecha de Llegada:</label>
+        <input type="date" name="fecha_llegada" id="fecha_llegada" value="<%= tarea ? tarea.fecha_llegada : '' %>" required>
+        <br>
+
+        <label for="fecha_limite">Fecha Límite:</label>
+        <input type="date" name="fecha_limite" id="fecha_limite" value="<%= tarea ? tarea.fecha_limite : '' %>" required>
+        <br>
+
+        <label for="estado">Estado:</label>
+        <select name="estado_id" id="estado" required>
+            <% estado.forEach(item => { %>
+                <option value="<%= item.id %>" <%= tarea && tarea.estado_id === item.id ? 'selected' : '' %>>
+                    <%= item.estado %>
+                </option>
+            <% }); %>
+        </select>
+        <br>
+
+        <button type="submit"><%= tarea ? 'Guardar Cambios' : 'Crear Tarea' %></button>
+    </form>
+</body>
+</html>

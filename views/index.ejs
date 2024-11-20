@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Tareas</title>
+</head>
+<body>
+    <h1>Lista de Tareas</h1>
+    <a href="/tareas/nueva">Crear Nueva Tarea</a>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Título</th>
+                <th>Importancia</th>
+                <th>Urgencia</th>
+                <th>Dependencia</th>
+                <th>Fecha de Llegada</th>
+                <th>Fecha Límite</th>
+                <th>Estado</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% tareas.forEach(tarea => { %>
+                <tr>
+                    <td><%= tarea.id %></td>
+                    <td><%= tarea.titulo %></td>
+                    <td><%= tarea.importancia %></td>
+                    <td><%= tarea.urgencia %></td>
+                    <td><%= tarea.dependencia %></td>
+                    <td><%= tarea.fecha_llegada %></td>
+                    <td><%= tarea.fecha_limite %></td>
+                    <td><%= tarea.estado %></td>
+                    <td>
+                        <a href="/tareas/editar/<%= tarea.id %>">Editar</a>
+                        <a href="/tareas/eliminar/<%= tarea.id %>" onclick="return confirm('¿Estás seguro de eliminar esta tarea?')">Eliminar</a>
+                    </td>
+                </tr>
+            <% }); %>
+        </tbody>
+    </table>
+</body>
+</html>
