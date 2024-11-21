@@ -16,7 +16,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 // Crear la conexión
 const db = mysql.createConnection({
     host: 'localhost',
-    user: 'root', // tu usuario de MySQL
+    user: 'SiTareas', // tu usuario de MySQL
     password: '1234', // tu contraseña de MySQL
     database: 'Pendientes', // nombre de la base de datos
     port: 3306
