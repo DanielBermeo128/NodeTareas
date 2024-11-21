@@ -4,20 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lista de Tareas</title>
+    <link rel="stylesheet" type="text/css" href="css/styles.css">
 </head>
 <body>
     <h1>Lista de Tareas</h1>
-    <a href="/tareas/nueva">Crear Nueva Tarea</a>
-    <table border="1">
+    <div class="actions">
+        <form action="/tareas/nueva" method="get">
+            <button type="submit" class="btn-new">Nueva Tarea</button>
+        </form>
+    </div>
+    <table>
         <thead>
             <tr>
                 <th>ID</th>
                 <th>Título</th>
-                <th>Importancia</th>
-                <th>Urgencia</th>
                 <th>Dependencia</th>
                 <th>Fecha de Llegada</th>
                 <th>Fecha Límite</th>
+                <th>Importancia</th>
+                <th>Urgencia</th>
                 <th>Estado</th>
                 <th>Acciones</th>
             </tr>
@@ -27,19 +32,25 @@
                 <tr>
                     <td><%= tarea.id %></td>
                     <td><%= tarea.titulo %></td>
-                    <td><%= tarea.importancia %></td>
-                    <td><%= tarea.urgencia %></td>
                     <td><%= tarea.dependencia %></td>
                     <td><%= tarea.fecha_llegada %></td>
                     <td><%= tarea.fecha_limite %></td>
-                    <td><%= tarea.estado %></td>
+                    <td class="catalogo importancia <%= tarea.importancia.toLowerCase() %>"><%= tarea.importancia %></td>
+                    <td class="catalogo urgencia <%= tarea.urgencia.toLowerCase().replace(' ', '-') %>"><%= tarea.urgencia %></td>
+                    <td class="catalogo estado <%= tarea.estado.toLowerCase().replace(' ', '-') %>"><%= tarea.estado %></td>
                     <td>
-                        <a href="/tareas/editar/<%= tarea.id %>">Editar</a>
-                        <a href="/tareas/eliminar/<%= tarea.id %>" onclick="return confirm('¿Estás seguro de eliminar esta tarea?')">Eliminar</a>
+                        <form action="/tareas/editar/<%= tarea.id %>" method="get" style="display: inline;">
+                            <button type="submit" class="btn-edit">Editar</button>
+                        </form>
+                        <form action="/tareas/eliminar/<%= tarea.id %>" method="get" style="display: inline;">
+                            <button type="submit" class="btn-delete">Eliminar</button>
+                        </form>
                     </td>
                 </tr>
             <% }); %>
         </tbody>
     </table>
+
+
 </body>
 </html>

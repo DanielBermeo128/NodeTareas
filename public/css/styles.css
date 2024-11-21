@@ -1,0 +1,175 @@
+/* General */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #340653;
+    margin: 0;
+    padding: 0;
+    color: #e7e7e7;
+}
+
+h1, h2, h3 {
+    color: #ddbaf5;
+    text-align: center;
+}
+
+a {
+    color: #3498db;
+    text-decoration: none;
+}
+
+/* Encabezado */
+header {
+    background-color: #7B4C9B;
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+}
+/* Catálogo general */
+.catalogo {
+    font-weight: bold;
+    text-align: center;
+    padding: 8px;
+    border-radius: 5px;
+    color: rgb(66, 66, 66);
+}
+
+/* Importancia */
+.importancia.trivial {
+    background-color: #8eff93; /* Verde claro */
+}
+
+.importancia.importante {
+    background-color: #f7ea7b; /* Amarillo */
+    
+}
+
+.importancia.vital {
+    background-color: #E57373; /* Rojo */
+}
+
+/* Urgencia */
+.urgencia.aliviado {
+    background-color: #6aff6f; /* Verde */
+}
+
+.urgencia.procrastinado {
+    background-color: #ffd965; /* Amarillo */
+    
+}
+
+.urgencia.urgente {
+    background-color: #ffb24e; /* Naranja */
+}
+
+.urgencia.para-ayer {
+    background-color: #ff7065; /* Rojo */
+}
+
+/* Estado */
+.estado.espera {
+    background-color: #4fb0ff; /* Azul */
+}
+
+.estado.en-proceso {
+    background-color: #FFEB3B; /* Amarillo */
+    
+}
+
+.estado.finalizada {
+    background-color: #7fff83; /* Verde */
+}
+
+
+/* Tabla */
+table {
+    width: 90%;
+    margin: 20px auto;
+    border-collapse: collapse;
+}
+
+table, th, td {
+    border: 1px solid #ddd;
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+}
+
+th {
+    background-color: #7B4C9B;
+    color: white;
+}
+
+tr:nth-child(even) {
+    background-color:  #ca7aff;;
+    color: #0a0a0a;
+}
+
+/* Botones generales */
+button {
+    font-size: 14px;
+    padding: 8px 12px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    color: white;
+    transition: background-color 0.3s ease;
+}
+
+/* Botón Editar */
+.btn-edit {
+    background-color: #7B4C9B; /* Morado */
+}
+
+.btn-edit:hover {
+    background-color: #6C3A8E; /* Morado oscuro */
+}
+
+/* Botón Eliminar */
+.btn-delete {
+    background-color: #e74c3c; /* Rojo */
+}
+
+.btn-delete:hover {
+    background-color: #c0392b; /* Rojo oscuro */
+}
+
+
+/* Alineación en la tabla */
+td form {
+    margin: 0;
+    display: inline;
+
+}
+
+/* Contenedor de acciones */
+.actions {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Botón Nueva Tarea */
+.btn-new {
+    background-color: #4A90E2; /* Azul */
+    color: white;
+    font-size: 16px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.btn-new:hover {
+    background-color: #357ABD; /* Azul más oscuro */
+}
+
+
+
+

@@ -1,7 +1,7 @@
 const express = require('express');
 const mysql = require('mysql2');
 const bodyParser = require('body-parser');
-const { createDeflate } = require('zlib');
+const path = require('path')
 
 const app = express();
 
@@ -10,6 +10,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 // Configuración de plantillas dinámicas
 app.set('view engine', 'ejs');
+
+app.use(express.static(path.join(__dirname, 'public')));
 
 // Crear la conexión
 const db = mysql.createConnection({
@@ -220,6 +222,21 @@ app.post('/tareas/editar/:id', (req, res) => {
 // Eliminar una tarea
 app.get('/tareas/eliminar/:id', (req, res) => {
     const { id } = req.params;
+    
+    res.write('<html><body>');
+    res.write(`<script>
+        if (confirm('¿Seguro que deseas eliminar esta tarea?')) {
+            window.location.href = "/tareas/eliminar_confirmado/${id}";
+        } else {
+            window.location.href = "/";
+        }
+    </script>`);
+    res.write('</body></html>');
+    res.end();
+});
+
+app.get('/tareas/eliminar_confirmado/:id', (req, res) => {
+    const { id } = req.params;
     const query = 'DELETE FROM tareas WHERE id = ?';
     db.query(query, [id], (err) => {
         if (err) {
@@ -230,3 +247,4 @@ app.get('/tareas/eliminar/:id', (req, res) => {
         }
     });
 });
+
